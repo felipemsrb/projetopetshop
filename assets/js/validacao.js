@@ -10,7 +10,7 @@ export function valida(input) {
         input.parentElement.querySelector('input-mensagem-erro').innerHTML = '';
     } else {
         input.parentElement.classList.add('input-container--invalido');
-        input.parentElement.querySelector('input-mensagem-erro').innerHTML = 'mostraMensagemDeErro(tipoDeInput, input)';
+        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = mostraMensagemDeErro(tipoDeInput, input);
     }
 }
 
@@ -51,6 +51,11 @@ const validadores = {
 
 function mostraMensagemDeErro(tipoDeInput, input) {
     let mensagem = ''
+    tiposDeErro.forEach(erro => {
+        if(input.validity[erro]) {
+            mensagem = mensagensDeErro[tipoDeInput][erro]
+        }
+    })
     
     return mensagem
 }
