@@ -81,3 +81,12 @@ function maiorQue18(data) {
     return dataMais18 <= dataAtual
 
 }
+
+
+function validaCPF(input) {
+
+    const cpfFormatado = input.value.replace(/\D/g, '');
+    let mensagem = '';
+
+    input.setCustomValidity(mensagem)
+}
