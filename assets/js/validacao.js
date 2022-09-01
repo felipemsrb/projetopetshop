@@ -90,3 +90,22 @@ function validaCPF(input) {
 
     input.setCustomValidity(mensagem)
 }
+
+function checaCPFRepetido (cpf) {
+    const valoresRepetidos =[
+        '000000000000',
+        '111111111111',
+        '222222222222',
+        '333333333333',
+        '444444444444',
+        '555555555555',
+        '666666666666',
+        '777777777777',
+        '888888888888',
+        '999999999999'
+    ]
+
+    let cpfValido = true;
+
+    return cpfValido;
+}
