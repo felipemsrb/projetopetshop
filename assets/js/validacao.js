@@ -105,6 +105,12 @@ function checaCPFRepetido (cpf) {
         '999999999999'
     ]
 
+    valoresRepetidos.forEach(valor => {
+        if(valor == cpf){
+            cpfValido = false;
+        }
+    })
+
     let cpfValido = true;
 
     return cpfValido;
