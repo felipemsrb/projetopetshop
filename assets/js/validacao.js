@@ -41,12 +41,18 @@ const mensagensDeErro = {
         valueMissing: 'O campo de data de nascimento não pode estar vazio.',
         customError: 'Você deve ser maior de idade para se cadastrar.'
 
+    },
+
+    cpf: {
+        valueMissing: 'O campo de CPF não pode estar vazio.',
+        customError: 'O CPF digitado não é válido.'
     }
 
 }
 
 const validadores = {
-    dataNascimento:input => validaDataNascimento(input)
+    dataNascimento:input => validaDataNascimento(input),
+    cpf:input => validaCPF(input)
 }
 
 function mostraMensagemDeErro(tipoDeInput, input) {
@@ -88,10 +94,15 @@ function validaCPF(input) {
     const cpfFormatado = input.value.replace(/\D/g, '');
     let mensagem = '';
 
+    if(!checaCPFRepetido(cpfFormatado)) {
+        mensagem = 'O CPF digitado não é válido.'
+    }
+
     input.setCustomValidity(mensagem)
 }
 
-function checaCPFRepetido (cpf) {
+
+function checaCPFRepetido(cpf) {
     const valoresRepetidos =[
         '000000000000',
         '111111111111',
@@ -104,14 +115,15 @@ function checaCPFRepetido (cpf) {
         '888888888888',
         '999999999999'
     ]
-
+    
+    let cpfValido = true;
+    
     valoresRepetidos.forEach(valor => {
         if(valor == cpf){
             cpfValido = false;
         }
     })
 
-    let cpfValido = true;
 
     return cpfValido;
 }
